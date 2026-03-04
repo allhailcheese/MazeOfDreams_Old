@@ -15,7 +15,7 @@ func provide(rand: Random) -> Array[Resource]:
 	if should_reshuffle():
 		reshuffle(rand)
 	if options.is_empty():
-		Logger.error(str("attempt to get item from empty shuffle bag"))
+		LogUtils.error(str("attempt to get item from empty shuffle bag"))
 		return []
 	var choice: LootProvider = options.back()
 	discards.push_back(options.pop_back())

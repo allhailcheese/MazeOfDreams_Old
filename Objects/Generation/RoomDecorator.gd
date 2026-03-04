@@ -35,13 +35,13 @@ var chest_tile: int:
 
 func init_decorating() -> void:
 	#put 1 enemy in every room
-	Logger.logs("decorating enemies")
+	LogUtils.logs("decorating enemies")
 	decorate_enemies()
-	Logger.logs("finished decorating enemies")
+	LogUtils.logs("finished decorating enemies")
 	#put 1 chest in each room at probability 0.3
-	Logger.logs("decorating chests")
+	LogUtils.logs("decorating chests")
 	decorate_chests()
-	Logger.logs("finished decorating chests")
+	LogUtils.logs("finished decorating chests")
 	
 	room_decoration_finished.emit()
 

@@ -31,12 +31,12 @@ var gameplay_rand: Random
 var god: bool = false
 
 func _ready() -> void:
-	Logger.logs("test log")
+	LogUtils.logs("test log")
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(&"toggle_god"):
 		god = not god
-		Logger.logs(str("god" if god else "not god"))
+		LogUtils.logs(str("god" if god else "not god"))
 	if Input.is_action_just_pressed(&"close_game"):
 		game_closed.emit()
 		get_tree().quit()

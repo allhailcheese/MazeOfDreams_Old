@@ -13,8 +13,8 @@ func seed_random() -> void:
 func seed_with(x) -> void:
 	given_seed = x
 	seed = hash(x)
-	Logger.logs(str("given seed: ", given_seed))
-	Logger.logs(str("hashed seed: ", seed))
+	LogUtils.logs(str("given seed: ", given_seed))
+	LogUtils.logs(str("hashed seed: ", seed))
 
 func random_point_in_circle(r: float) -> Vector2:
 	#random polar
@@ -42,17 +42,17 @@ func chance(of: float) -> bool:
 
 func pick_random(options: Array):
 	if options.is_empty():
-		Logger.error(str("attempt to pick a random element out of an empty array"))
+		LogUtils.error(str("attempt to pick a random element out of an empty array"))
 		return null
 	
 	return options[randi_range(0,options.size()-1)]
 
 func pick_random_weighted(options: Array, weights: Array[int], accumulated: bool = false):
 	if options.is_empty():
-		Logger.error(str("attempt to pick a random element out of an empty array"))
+		LogUtils.error(str("attempt to pick a random element out of an empty array"))
 		return null
 	if options.size() != weights.size():
-		Logger.error(str("options array and weights array are unequal"))
+		LogUtils.error(str("options array and weights array are unequal"))
 		return null
 	
 	var weights_: Array[int] = []

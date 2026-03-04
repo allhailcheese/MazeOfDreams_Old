@@ -5,7 +5,6 @@ var room1: RoomShape
 var room2: RoomShape
 
 func _init(room1_: RoomShape, room2_: RoomShape) -> void:
-	super()
 	room1 = room1_
 	room2 = room2_
 

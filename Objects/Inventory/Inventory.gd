@@ -112,14 +112,14 @@ func set_at(i: int, j: int, value: InventoryItem) -> void:
 func try_insert_item_list(items: Array[Resource]) -> void:
 	for item in items:
 		if not item is Item:
-			Logger.error(str("attempt to insert item list with non item resource ",item))
+			LogUtils.error(str("attempt to insert item list with non item resource ",item))
 			break
 		var iitem: InventoryItem = InventoryItem.new()
 		iitem.item = item
 		iitem.count = 1
 		var remain := try_insert(iitem)
 		if remain != null:
-			Logger.warn(str("space to insert items to inventory ended mid insertion"))
+			LogUtils.warn(str("space to insert items to inventory ended mid insertion"))
 			break
 
 func populate_with_provider(rand: Random, provider: LootProvider) -> void:

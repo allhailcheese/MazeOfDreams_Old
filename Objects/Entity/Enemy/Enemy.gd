@@ -39,7 +39,7 @@ func apply_knockback(vector: Vector2) -> void:
 
 func apply_effect(effect: Effect) -> void:
 	if effect.effect_type == "":
-		Logger.warn(str("trying to apply effect without type: ", effect))
+		LogUtils.warn(str("trying to apply effect without type: ", effect))
 		return
 	if not effect.effect_type in active_effects\
 	or not is_instance_valid(active_effects[effect.effect_type]):
@@ -49,7 +49,7 @@ func apply_effect(effect: Effect) -> void:
 
 func remove_effect(effect: Effect) -> void:
 	if effect.effect_type == "":
-		Logger.warn(str("trying to remove effect without type: ", effect))
+		LogUtils.warn(str("trying to remove effect without type: ", effect))
 		return
 	if not effect.effect_type in active_effects:
 		return

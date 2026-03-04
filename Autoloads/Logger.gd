@@ -1,6 +1,6 @@
-extends Node
 
 #wtf - an impossible event. should never get outputted.
+extends Node
 #error - something really bad happened. the game might not be able to continue.
 #warning - something weird happened. the game can function.
 #info - general message.

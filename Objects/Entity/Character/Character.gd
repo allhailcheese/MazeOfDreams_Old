@@ -142,14 +142,14 @@ func on_weapon_item_change(_slot: InventorySlot, from: InventoryItem, to: Invent
 		return
 	#not a weapon item
 	if not to.item is WeaponItem:
-		Logger.warn(str("attempt to switch weapon to non weapon item ", to))
+		LogUtils.warn(str("attempt to switch weapon to non weapon item ", to))
 		return
 	var nto := to.item as WeaponItem
 	#create weapon
 	var new_weapon: Node2D = nto.init_node()
 	#not actually a weapon
 	if not new_weapon is Weapon:
-		Logger.warn(str("attempt to switch weapon to non weapon ", new_weapon))
+		LogUtils.warn(str("attempt to switch weapon to non weapon ", new_weapon))
 		if new_weapon: new_weapon.queue_free()
 		return
 	#equip weapon
@@ -170,14 +170,14 @@ func on_modifier_item_change(slot: InventorySlot, from: InventoryItem, to: Inven
 		return
 	#not a modifier item
 	if not to.item is ModifierItem:
-		Logger.warn(str("attempt to switch modifier to non modifier item ", to))
+		LogUtils.warn(str("attempt to switch modifier to non modifier item ", to))
 		return
 	var nto := to.item as ModifierItem
 	#create modifier
 	var new_modifier: Node2D = nto.init_node()
 	#not actually a modifier
 	if not new_modifier is Modifier:
-		Logger.warn(str("attempt to switch modifier to non modifier ", new_modifier))
+		LogUtils.warn(str("attempt to switch modifier to non modifier ", new_modifier))
 		if new_modifier: new_modifier.queue_free()
 		return
 	#equip modifier
@@ -299,7 +299,7 @@ func apply_knockback(vector: Vector2) -> void:
 
 func apply_effect(effect: Effect) -> void:
 	if effect.effect_type == "":
-		Logger.warn(str("trying to apply effect without type: ", effect))
+		LogUtils.warn(str("trying to apply effect without type: ", effect))
 		return
 	if not effect.effect_type in active_effects\
 	or not is_instance_valid(active_effects[effect.effect_type]):
@@ -309,7 +309,7 @@ func apply_effect(effect: Effect) -> void:
 
 func remove_effect(effect: Effect) -> void:
 	if effect.effect_type == "":
-		Logger.warn(str("trying to remove effect without type: ", effect))
+		LogUtils.warn(str("trying to remove effect without type: ", effect))
 		return
 	if not effect.effect_type in active_effects:
 		return

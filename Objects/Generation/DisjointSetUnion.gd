@@ -6,14 +6,14 @@ var tsize: Dictionary = {}
 
 func make_set(x) -> void:
 	if x in par:
-		Logger.error(str("attempt to make_set on already existent element",x))
+		LogUtils.error(str("attempt to make_set on already existent element",x))
 		return
 	par[x] = null
 	tsize[x] = 1
 
 func find_set(x):
 	if not x in par:
-		Logger.error(str("attempt to find_set a non existent element",x))
+		LogUtils.error(str("attempt to find_set a non existent element",x))
 		return null
 	if par[x] == null:
 		return x

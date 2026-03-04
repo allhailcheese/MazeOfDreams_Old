@@ -7,11 +7,11 @@ const DEBUG_DRAW := true
 signal room_dreaming_finished(positions: PackedVector2Array, shapes: Array[Shape2D])
 
 @export var starting_room_shape: PackedScene = preload("res://Objects/Generation/RoomShape.tscn")
-@export var generated_room_amount: int = 100
+@export var generated_room_amount: int = 200
 @export var min_room_size: int = 6
 @export var max_room_size: int = 18
 @export var big_room_start: int = 216
-@export var placement_radius: float = 40
+@export var placement_radius: float = 50
 @export var hallway_width: int = 2
 
 @export var max_spread_wait: float = 5
@@ -84,7 +84,7 @@ func create_and_place_rooms() -> void:
 		place_room(room)
 
 func init_spread() -> void:
-	Logger.logs("room spreading starting")
+	LogUtils.logs("room spreading starting")
 	finished = false
 	finished_placing = false
 	
@@ -104,10 +104,10 @@ func init_spread() -> void:
 	Engine.physics_jitter_fix = 0
 
 func spread_timeout() -> void:
-	Logger.logs("spread timeout reached")
+	LogUtils.logs("spread timeout reached")
 	check_spread_finish()
 	if finished: return
-	Logger.error(str("spreading took too long. report seed ",rand.given_seed," to cheese"))
+	LogUtils.error(str("spreading took too long. report seed ",rand.given_seed," to cheese"))
 	finish_spread()
 
 func check_spread_finish() -> void:
@@ -124,7 +124,7 @@ func check_spread_finish() -> void:
 	finish_spread()
 
 func finish_spread() -> void:
-	Logger.logs("finished spread")
+	LogUtils.logs("finished spread")
 	Engine.physics_ticks_per_second = 60
 	Engine.max_physics_steps_per_frame = 8
 	Engine.physics_jitter_fix = 0.5
@@ -220,7 +220,7 @@ func get_room_edges() -> Array[ConnectionEdge]:
 	var posarr := PackedVector2Array(big_room_list.map(func(room): return room.global_position))
 	var triangulation := Geometry2D.triangulate_delaunay(posarr)
 	if(triangulation.is_empty()):
-		Logger.error(str("room triangulation failed. report seed ",rand.given_seed," to cheese"))
+		LogUtils.error(str("room triangulation failed. report seed ",rand.given_seed," to cheese"))
 		return []
 	var result: Array[ConnectionEdge] = []
 	for i in range(triangulation.size()/3):
